@@ -178,11 +178,12 @@ void QFKeyTable::componentComplete()
         }
 
         QVariant v = property(p.name());
-        if (!v.isNull()) {
-            continue;
-        }
+		if (!v.isNull() && !v.toString().isEmpty())
+		{
+			continue;
+		}
 
-        setProperty(p.name(), name);
+		setProperty(p.name(), name);
     }
 
 }

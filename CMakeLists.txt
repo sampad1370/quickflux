@@ -15,7 +15,8 @@ endif()
 set(SRC_DIR "${PROJECT_SOURCE_DIR}/src")
 
 include(GNUInstallDirs)
-find_package(Qt5 COMPONENTS Core Quick Qml Gui CONFIG REQUIRED)
+find_package(QT NAMES Qt5 Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core Quick Qml Gui CONFIG)
 
 set(quickflux_PRIVATE_SOURCES
   ${SRC_DIR}/priv/qfhook.cpp
@@ -99,9 +100,9 @@ add_library(QuickFlux::quickflux ALIAS quickflux)
 
 target_link_libraries(quickflux
   PUBLIC
-  Qt5::Qml
-  Qt5::Quick
-  Qt5::Core
+  Qt::Qml
+  Qt::Quick
+  Qt::Core
   )
 
 target_include_directories(quickflux
